@@ -24,5 +24,21 @@ namespace CalculatorRPN
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button obj = (Button)sender;
+            txtInputExpression.Text += obj.Content;
+        }
+
+        private void Clear(object sender, RoutedEventArgs e)
+        {
+            txtInputExpression.Text = string.Empty;
+        }
+
+        private void Result(object sender, RoutedEventArgs e)
+        {
+            //Что-то делать
+        }
     }
 }

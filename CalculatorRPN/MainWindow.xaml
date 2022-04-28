@@ -5,8 +5,242 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorRPN"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Калькулятор методом обратной Польской нотации" Height="450" Width="800"
+        MinHeight="600"
+        MinWidth="400"
+        >
+
+    <Window.Resources>
+        <Style x:Key="txtInputExpression" TargetType="TextBox">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="{StaticResource btnForegroundNumberColor}"/>
+        </Style>
+
+        <Style x:Key="btnNumber" TargetType="Button">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Background" Value="{StaticResource btnBackgroundNumberColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource btnForegroundNumberColor}"/>
+            <Setter Property="BorderThickness" Value="0.4"/>
+        </Style>
+
+        <Style x:Key="btnOperation" TargetType="Button">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Background" Value="{StaticResource btnBackgroundOperationColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource btnForegroundOperationColor}"/>
+            <Setter Property="BorderThickness" Value="0.4"/>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <TextBox 
+            x:Name="txtInputExpression"
+            Grid.ColumnSpan="4"
+            TextAlignment="Right"
+            VerticalContentAlignment="Center"
+            Style="{StaticResource txtInputExpression}"
+            />
+
+        <Button
+            Content="C"
+            Opacity="0.8"
+            Click="Clear"
+            Grid.Column="0"
+            Grid.Row="1"
+            Style="{StaticResource btnOperation}"
+            />
         
+        <Button
+            Content="("
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="1"
+            Grid.Row="1"
+            Style="{StaticResource btnOperation}"
+            />
+        <Button
+            Content=")"
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="2"
+            Grid.Row="1"
+            Style="{StaticResource btnOperation}"
+            />
+        
+        <Button
+            Content="/"
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="3"
+            Grid.Row="1"
+            Style="{StaticResource btnOperation}"
+            />
+
+        <Button
+            Content="7"
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="0"
+            Grid.Row="2"
+            Style="{StaticResource btnNumber}"
+            />
+        
+        <Button
+            Content="8"
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="1"
+            Grid.Row="2"
+            Style="{StaticResource btnNumber}"
+            />
+
+        <Button
+            Content="9"
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="2"
+            Grid.Row="2"
+            Style="{StaticResource btnNumber}"
+            />
+
+        <Button
+            Content="*"
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="3"
+            Grid.Row="2"
+            Style="{StaticResource btnOperation}"
+            />
+
+
+
+
+        <Button
+            Content="4"
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="0"
+            Grid.Row="3"
+            Style="{StaticResource btnNumber}"
+            />
+
+        <Button
+            Content="5"
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="1"
+            Grid.Row="3"
+            Style="{StaticResource btnNumber}"
+            />
+
+        <Button
+            Content="6"
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="2"
+            Grid.Row="3"
+            Style="{StaticResource btnNumber}"
+            />
+
+        <Button
+            Content="-"
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="3"
+            Grid.Row="3"
+            Style="{StaticResource btnOperation}"
+            />
+
+        <Button
+            Content="3"
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="0"
+            Grid.Row="4"
+            Style="{StaticResource btnNumber}"
+            />
+
+        <Button
+            Content="2"
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="1"
+            Grid.Row="4"
+            Style="{StaticResource btnNumber}"
+            />
+
+        <Button
+            Content="1"
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="2"
+            Grid.Row="4"
+            Style="{StaticResource btnNumber}"
+            />
+
+        <Button
+            Content="+"
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="3"
+            Grid.Row="4"
+            Style="{StaticResource btnOperation}"
+            />
+
+        <Button
+            Content="^"
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="0"
+            Grid.Row="5"
+            Grid.ColumnSpan="1"
+            Style="{StaticResource btnOperation}"
+            />
+
+        <Button
+            Content="0"
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="1"
+            Grid.Row="5"
+            Grid.ColumnSpan="1"
+            Style="{StaticResource btnNumber}"
+            />
+
+
+        <Button
+            Content="%"
+            Opacity="0.8"
+            Click="Button_Click"
+            Grid.Column="2"
+            Grid.Row="5"
+            Grid.ColumnSpan="1"
+            Style="{StaticResource btnOperation}"
+            />
+
+
+        <Button
+            Content="="
+            Opacity="0.8"
+            Click="Result"
+            Grid.Column="3"
+            Grid.Row="5"
+            Style="{StaticResource btnOperation}"
+            />
+
     </Grid>
 </Window>
