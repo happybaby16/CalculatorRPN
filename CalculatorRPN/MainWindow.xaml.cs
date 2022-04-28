@@ -40,9 +40,10 @@ namespace CalculatorRPN
 
         private void Result(object sender, RoutedEventArgs e)
         {
-            
-            string s = "(20.2+3*2/2)/2";
-            TokenParser.GetTokenExpression(s);
+            string s = "(2+3*2/2)/2";
+            CalculatorReversePolishNotation RPN = new CalculatorReversePolishNotation();
+            RPN.ToExpressionRPN(s);
+            //TokenParser.GetTokenExpression(s);
         }
     }
 }
