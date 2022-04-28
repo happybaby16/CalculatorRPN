@@ -69,6 +69,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Calculator.cs" />
     <Compile Include="Model\CalculatorReversePolishNotation.cs" />
     <Compile Include="Model\Token.cs" />
     <Compile Include="Model\TokenParser.cs" />
