@@ -1,7 +1,9 @@
-﻿using System;
+﻿using CalculatorRPN.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -38,7 +40,9 @@ namespace CalculatorRPN
 
         private void Result(object sender, RoutedEventArgs e)
         {
-            //Что-то делать
+            
+            string s = "(20.2+3*2/2)/2";
+            TokenParser.GetTokenExpression(s);
         }
     }
 }
