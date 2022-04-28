@@ -8,6 +8,20 @@ namespace CalculatorRPN.Model
 {
     public class CalculatorReversePolishNotation
     {
+        List<Token> RNPTokens = null;
+        public string RNP 
+        {
+            get
+            {
+                string rnp = string.Empty;
+                if (RNPTokens != null)
+                {
+                    RNPTokens.ForEach(x => rnp += x.Value.ToString());
+                }
+                return rnp;
+            }
+        }
+
         private List<Token> ToExpressionRPN(string inputExpression)
         {
             List<Token> outputExpression = new List<Token>();
@@ -60,10 +74,18 @@ namespace CalculatorRPN.Model
                 }
             }
             //Записываем в выходной массив все оставшиеся операции в стеке
-            for (int i = 0; i < operationsStack.Count; i++)
+            for (int i = 0;operationsStack.Count!=0; i++)
             {
-                outputExpression.Add(operationsStack.Pop());
+                if (operationsStack.Peek().Type == TypeToken.Braket)
+                {
+                    operationsStack.Pop();
+                }
+                else
+                {
+                    outputExpression.Add(operationsStack.Pop());
+                }
             }
+            RNPTokens = outputExpression;
             return outputExpression;
         }
 

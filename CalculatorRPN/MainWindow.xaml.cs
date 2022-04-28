@@ -22,28 +22,11 @@ namespace CalculatorRPN
     /// </summary>
     public partial class MainWindow : Window
     {
+        ViewModel.ViewModel VM = new ViewModel.ViewModel();
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Button obj = (Button)sender;
-            txtInputExpression.Text += obj.Content;
-        }
-
-        private void Clear(object sender, RoutedEventArgs e)
-        {
-            txtInputExpression.Text = string.Empty;
-        }
-
-        private void Result(object sender, RoutedEventArgs e)
-        {
-            string s = "(2+3*2/2)^2";
-            CalculatorReversePolishNotation RPN = new CalculatorReversePolishNotation();
-            double? result = RPN.Calculate(s);
-            //TokenParser.GetTokenExpression(s);
+            DataContext = VM;
         }
     }
 }
